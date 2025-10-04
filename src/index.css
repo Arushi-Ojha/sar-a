@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Jersey+10&family=Quintessential&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Keania+One&family=Nabla&family=Silkscreen:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+html, body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #061723;
+}
+
+.image-panel {
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 80%;
+  height: 70%;
+
+  background: rgba(33, 76, 106, 0.25);
+  border: 2px solid rgba(69, 104, 130, 0.5);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  color: #FDAAAA;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(69, 104, 130, 0.5),
+              0 0 40px rgba(27, 60, 83, 0.2);
+
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.loader {
+  width: 80px;
+  aspect-ratio: 1;
+  border: 10px solid #0000;
+  box-sizing: border-box;
+  margin: 40px auto;
+  display: block;
+  background: 
+    radial-gradient(farthest-side, #B95E82 98%, #0000) 0    0/20px 20px,
+    radial-gradient(farthest-side, #FDAAAA 98%, #0000) 100% 0/20px 20px,
+    radial-gradient(farthest-side, #B95E82 98%, #0000) 100% 100%/20px 20px,
+    radial-gradient(farthest-side, #FDAAAA 98%, #0000) 0 100%/20px 20px,
+    linear-gradient(#B95E82 0 0) 50%/40px 40px,
+    #1B3C53;
+  background-repeat: no-repeat;
+  filter: blur(3px) contrast(8);
+  animation: l12 0.8s infinite;
+}
+
+@keyframes l12 {
+  100% { background-position: 100% 0, 100% 100%, 0 100%, 0 0, center; }
+}
+
+.image-viewer-title {
+  font-family: 'Honk', 'Quintessential', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 0 4px #FDAAAA, 0 0 8px #B95E82;
+}
+
+.animate-in {
+  animation: fadeSlide 1s ease-out forwards;
+}
+
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.sar-image {
+  max-width: 95%; 
+  max-height: 70%;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 0 15px #456882;
+  background: transparent;
+}
+
+.refresh-btn {
+font-family: 'Honk', 'Quintessential', sans-serif;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FDAAAA; 
+  background: rgba(185, 94, 130, 0.25); 
+  border: 2px solid #B95E82;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 4px #FDAAAA;
+  box-shadow: 0 0 8px rgba(185, 94, 130, 0.25);
+}
+
+.refresh-btn:hover {
+  background: rgba(185, 94, 130, 0.4);
+  box-shadow: 0 0 15px #B95E82;
+}
+
+.landing-page {
+  font-family: "Silkscreen", sans-serif;
+  color: #D2C1B6;
+  background: #1B3C53;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: first baseline;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+/* Section 1  */
+.section1 h1 {
+  font-family: "Nabla", cursive;
+  font-size: 10rem;
+  color: #E45A92;
+  text-shadow: 0 0 25px #FFACAC, 0 0 50px #3E1E68;
+}
+
+/* Add this rule for the Section 1 background */
+.section1 {
+  background-image: url('./assets/sun.jpg');
+  background-size: cover;      /* Ensures the image covers the whole section */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;  /* Prevents the image from repeating */
+}
+/* Section 2  */
+.section2 .holo-box {
+  font-family: "Keania One", cursive;
+  background: rgba(69, 104, 130, 0.15);
+  border: 2px solid #456882;
+  padding: 1rem;
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  max-width: 900px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #FFACAC;
+  box-shadow: 0 0 15px #456882;
+}
+.section2 {
+  position: relative;
+  width: 60%;
+  min-height: 100vh;
+  left: 40%;
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  background-image: url('./assets/spacebg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  /* Added padding so the box doesn't touch the screen edge */
+  padding-right: 10vw;
+  box-sizing: border-box; /* Ensures padding is included in the element's total width */
+}
+
+/* Section 3 */
+.section3 {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.flip-card {
+  background-color: transparent;
+  width: 220px;
+  height: 220px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 2px solid #5D2F77;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Silkscreen", sans-serif;
+  font-size: 1.3rem;
+  background: rgba(62, 30, 104, 0.2);
+  color: #D2C1B6;
+  box-shadow: 0 0 12px #3E1E68;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: rgba(228, 90, 146, 0.2);
+  color: #FFACAC;
+}
+.flip-card-front img.image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;      
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+/* Section 4 */
+.steps-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.steps-buttons button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #456882;
+  border-radius: 8px;
+  background: transparent;
+  color: #FFACAC;
+  cursor: pointer;
+  font-family: "Silkscreen", sans-serif;
+  transition: 0.3s;
+}
+.holo-box.step-detail {
+  font-size: 2.5rem;   
+  line-height: 1.8rem; 
+  color: #FFACAC;      
+  margin-top: 1.5rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.steps-buttons button.active {
+  background: #3E1E68;
+  color: #00ff88;
+}
+
+.step-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.floating-planet {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  z-index: 5;
+  transition: transform 0.5s;
+  animation: float 4s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-15px); }
+}
+
+.section4 {
+  position: relative;
+  padding: 2rem;
+}
+
+/* Section 5  */
+.game-box {
+  text-align: center;
+  font-family: "Silkscreen", sans-serif;
+}
+.section5 h3{
+    font-size: 3rem;
+}
+.options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.options button {
+  padding: 1rem 2.2rem;
+  border-radius: 10px;
+  border: 2px solid #456882;
+  background: transparent;
+  color: #FFACAC;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Silkscreen", sans-serif;
+}
+.options button.correct {
+  background: #3E1E68;
+  color: #00ff88;
+}
+.options button.wrong {
+  background: #5D2F77;
+  color: #ff4444;
+}
+
+/* Section 6 */
+.section6 h3 {
+  font-family: "Keania One", cursive;
+  color: #E45A92;
+  margin-bottom: 1rem;
+}
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.calculator button {
+  padding: 1rem;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  border: 2px solid #456882;
+  background: transparent;
+  color: #456882;
+  cursor: pointer;
+  font-family: "Silkscreen", sans-serif;
+  transition: 0.3s;
+}
+.calculator button:hover {
+  background: #FFACAC;
+  color: #1B3C53;
+}
+.calc-input {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  font-family: "Nabla", cursive;
+  color: #FFACAC;
+}
+
+
+.earth-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min-content;
+  height: min-content;
+  z-index: 10; /* High z-index to keep it on top of other content */
+  pointer-events: none; /* Allows clicks and scrolls to pass through to the content below */
+  transition: transform 0.2s linear; /* Optional: adds a little smoothness */
+}
+/* Use a font similar to Apple's UI for authenticity */
+
+.navbar-container {
+  /* Positioning */
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Ensure it's on top of all other content */
+  
+  /* Glassmorphism Effect */
+  background: rgba(35, 35, 35, 0.3); /* Semi-transparent background */
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px); /* The all-important blur */
+   /* For Safari support */
+  border-radius: 30px; /* Pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge highlight */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+
+  /* Flex layout for buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px; /* Inner spacing */
+}
+
+.nav-button {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.15); /* Highlight on hover */
+  color: #ffffff;
+}

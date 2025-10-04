@@ -1,0 +1,11 @@
+Model Information:
+* title:	ICE SPIKES Minecraft
+* source:	https://sketchfab.com/3d-models/ice-spikes-minecraft-4fdc8506fd3f4cfaa330967ea743d326
+* author:	DURVESH123 (https://sketchfab.com/durvesh123)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "ICE SPIKES Minecraft" (https://sketchfab.com/3d-models/ice-spikes-minecraft-4fdc8506fd3f4cfaa330967ea743d326) by DURVESH123 (https://sketchfab.com/durvesh123) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
