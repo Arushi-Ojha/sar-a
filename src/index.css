@@ -236,6 +236,19 @@ font-family: 'Honk', 'Quintessential', sans-serif;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  
+}
+.section4 {
+  /* Make the section a vertical flex container */
+  display: flex;
+  flex-direction: column;
+  
+  /* Center the content horizontally and vertically */
+  align-items: center;
+  justify-content: center;
+  
+  /* This now controls the space between the buttons and the detail box */
+  gap: 3rem; 
 }
 
 .steps-buttons button {
@@ -386,7 +399,7 @@ font-family: 'Honk', 'Quintessential', sans-serif;
   backdrop-filter: blur(15px); /* The all-important blur */
    /* For Safari support */
   border-radius: 30px; /* Pill shape */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge highlight */
+  border: 1px solid rgba(231, 184, 12, 0.434); /* Subtle edge highlight */
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 
   /* Flex layout for buttons */
@@ -414,4 +427,86 @@ font-family: 'Honk', 'Quintessential', sans-serif;
 .nav-button:hover {
   background: rgba(255, 255, 255, 0.15); /* Highlight on hover */
   color: #ffffff;
+}
+/* Add this to lift content in sections 3-6 above the Earth model */
+#section-3 > *,
+#section-4 > *,
+#section-5 > *,
+#section-6 > * {
+  position: relative;
+  z-index: 1;
+}
+/* src/components/AsteroidBelt.css */
+
+/* src/components/AsteroidBelt.css */
+
+.asteroid-belt-container {
+  /* This is crucial for containing the absolutely positioned asteroids */
+  position: relative;
+  width: 100%;
+  height: 200px; /* A shorter container works well for a straight belt */
+  overflow: hidden;
+  /* Background properties are removed for transparency */
+}
+
+.asteroid-wrapper {
+  position: absolute;
+  /* Top, left, transform, and opacity are now set by inline styles from React */
+}
+
+.asteroid {
+  height: 30px;
+  width: auto;
+  
+  /* Animation properties are applied to the image itself */
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* These delays add another layer of randomness to the animation */
+.asteroid-wrapper:nth-child(2n) .asteroid { animation-delay: -4s; }
+.asteroid-wrapper:nth-child(3n) .asteroid { animation-delay: -2.5s; }
+.asteroid-wrapper:nth-child(5n) .asteroid { animation-delay: -6s; }
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* AI Interpretation Box Styling */
+
+.ai-box {
+  margin-top: 25px; /* Adds space between the SAR image and this box */
+  padding: 20px;
+  background: rgba(6, 23, 35, 0.4); /* A slightly darker, more opaque background to stand out */
+  border: 1px solid rgba(69, 104, 130, 0.7);
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(185, 94, 130, 0.2); /* Inner shadow for a holographic depth effect */
+  text-align: left; /* Align text to the left for better readability of paragraphs */
+}
+
+.ai-box h4 {
+  font-family: "Keania One", sans-serif; /* Using this stylized font from your theme for the heading */
+  color: #FDAAAA;
+  font-size: 1.5rem;
+  margin: 0 0 12px 0; /* Reset margin and add space below the title */
+  text-align: center; /* Keep the title centered */
+  letter-spacing: 1px;
+  text-shadow: 0 0 4px #B95E82; /* Subtle glow to match other elements */
+}
+
+.ai-box p {
+  font-family: 'Inter', sans-serif; /* Using a clean, readable font for the AI's explanation */
+  color: #eaddd7; /* A slightly softer off-white/pink for easier reading of text blocks */
+  font-size: 1.1rem;
+  line-height: 1.6; /* Improves readability for multiple lines */
+  margin: 0;
+  white-space: pre-wrap; /* This makes sure line breaks (\n) from the AI are displayed correctly */
 }

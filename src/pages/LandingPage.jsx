@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-// Import your assets and components
+import AsteroidBelt from "./AsteroidBelt";
 import Asf from "../assets/asf.jpg";
 import Open from "../assets/open.png";
 import Git from "../assets/github.png";
@@ -13,7 +13,7 @@ import J from "../assets/jupiter.png";
 import N from "../assets/neptune.png";
 import S from "../assets/saturn.png";
 
-// Import the Earth component
+
 import Earth from "./Earth";
 
 const FlipCard = ({ front, back, display }) => {
@@ -92,9 +92,7 @@ const LandingPage = ({ navigate }) => {
     }
   };
 
-  // State for the Earth model's transform style
   const [earthTransform, setEarthTransform] = useState('');
-  // NEW: State for the Earth model's z-index
   const [earthZIndex, setEarthZIndex] = useState(10);
 
   useEffect(() => {
@@ -102,33 +100,23 @@ const LandingPage = ({ navigate }) => {
       const scrollY = window.scrollY;
       const vh = window.innerHeight;
       let x, y, scale;
-
-      // Animate from Section 1 to Section 2
       if (scrollY < vh) {
         const progress = scrollY / vh;
-        // Pushes Earth from center (50vw) to far-left (5vw)
         x = 50 - progress * 45; 
         y = 100 - progress * 50;
         scale = 0.8 + progress * 0.2;
       }
-      // Animate from Section 2 to Section 3
       else if (scrollY < vh * 2) {
         const progress = (scrollY - vh) / vh;
-        // Pushes Earth from far-left (5vw) to far-right (95vw)
         x = 5 + progress * 90; 
         y = 50;
-        // Makes Earth bigger as it moves to the right
         scale = 1.0 + progress * 0.2; 
       }
-      // Position for sections after 3
       else {
-        x = 95; // Stays at far-right
+        x = 95;
         y = 50;
-        scale = 1.2; // Stays at the larger size
+        scale = 1.2;
       }
-
-      // NEW: Change z-index to move Earth behind content in Section 3
-      // We start the transition slightly before it enters section 3 for a smoother effect
       setEarthZIndex(scrollY < vh * 1.8 ? 10 : 0);
 
       setEarthTransform(`translate(${x}vw, ${y}vh) translate(-50%, -50%) scale(${scale})`);
@@ -151,13 +139,10 @@ const LandingPage = ({ navigate }) => {
       >
         <Earth />
       </div>
-
-      {/* FIXED: Added id="section-1" */}
       <section id="section-1" className="section section1">
         <h1>SAR-A</h1>
       </section>
 
-      {/* FIXED: Added id="section-2" */}
       <section id="section-2" className="section section2">
         <div className="holo-box">
           <p>
@@ -169,16 +154,14 @@ const LandingPage = ({ navigate }) => {
           </p>
         </div>
       </section>
-
-      {/* FIXED: Added id="section-3" */}
+      <AsteroidBelt/>
       <section id="section-3" className="section section3">
         <FlipCard display={Arushi} front="Arushi Ojha" back="Arushi, a CS undergrad , always enthusiastic to learn something new" />
         <FlipCard display={Asf} front="ASF Earth Data API" back="Providing the SAR meta Data necessary to showcase us" />
         <FlipCard display={Open} front="OpenRouter API" back="Analysing the SAR meta data so it is easier to read and understand by everyone" />
         <FlipCard display={Git} front="Github" back="Hosting everything online for devOps all around the world to enjoy this application" />
       </section>
-
-      {/* FIXED: Added id="section-4" */}
+      <AsteroidBelt/>
       <section id="section-4" className="section section4">
         <div className="steps-buttons">
           {steps.map((step, idx) => (
@@ -204,11 +187,10 @@ const LandingPage = ({ navigate }) => {
           />
         ))}
       </section>
-
-      {/* FIXED: Added id="section-5" */}
+      <AsteroidBelt/>
       <section id="section-5" className="section section5">
         <div className="game-box">
-          <Minecraft /><p>you can grab and rotate the model to examine better</p>
+          
           <h3>{questions[currentQuestion].question}</h3>
           <div className="options">
             {questions[currentQuestion].options.map((opt, idx) => (
@@ -228,9 +210,9 @@ const LandingPage = ({ navigate }) => {
             ))}
           </div>
         </div>
+        <Minecraft />
       </section>
-
-      {/* FIXED: Added id="section-6" */}
+      <AsteroidBelt/>
       <section id="section-6" className="section section6">
         <h3>Type 5678...</h3>
         <div className="calculator">

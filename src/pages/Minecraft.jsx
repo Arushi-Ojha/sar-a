@@ -4,10 +4,9 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 
 function MinecraftModel() {
   const group = useRef();
-  // Load the GLTF scene
   const { scene } = useGLTF("./ice_spikes_minecraft/scene.gltf");
 
-  return <primitive ref={group} object={scene} scale={10} />;
+  return <primitive ref={group} object={scene} scale={7} />;
 }
 
 export default function Minecraft() {
@@ -24,5 +23,4 @@ export default function Minecraft() {
   );
 }
 
-// Preload the model for better performance
 useGLTF.preload("/ice_spikes_minecraft/scene.gltf");
