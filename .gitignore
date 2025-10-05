@@ -1,4 +1,3 @@
 ﻿node_modules/
 *.map
-dist/
 .vite/
