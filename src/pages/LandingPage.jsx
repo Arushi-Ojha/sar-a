@@ -13,6 +13,11 @@ import J from "../assets/jupiter.png";
 import N from "../assets/neptune.png";
 import S from "../assets/saturn.png";
 
+// Importing the SAR images you provided
+import SarImage1 from "../assets/Sar1.jpg"; // Make sure to place Sar1.jpg in your assets folder
+import SarImage2 from "../assets/Sar2.avif"; // Make sure to place Sar2.avif in your assets folder
+import SarImage3 from "../assets/Sar3.jpeg"; // Make sure to place Sar3.jpeg in your assets folder
+
 
 import Earth from "./Earth";
 
@@ -37,11 +42,11 @@ const FlipCard = ({ front, back, display }) => {
 const LandingPage = ({ navigate }) => {
   navigate = useNavigate();
   const steps = [
-    { text: "We bring you SAR data from all over the Globe...", img: E, label: "Earth", top: "10%", left: "15%" },
-    { text: "Once you find the location that facinates you...", img: M, label: "Mars", top: "30%", left: "70%" },
-    { text: "Our servers will fetch, and load the Latest SAR image...", img: J, label: "Jupiter", top: "50%", left: "20%" },
-    { text: "Along with SAR image, you will get Meta SAR data...", img: N, label: "Neptune", top: "70%", left: "75%" },
-    { text: "Read, Understand, Enjoy and when done...", img: S, label: "Earth Again", top: "85%", left: "40%" },
+    { text: "We bring you SAR data from any location on the Globe.", img: E, label: "Click Me", top: "10%", left: "15%" },
+    { text: "Once you find a location that fascinates you, simply click to pin it.", img: M, label: "Click me", top: "30%", left: "70%" },
+    { text: "Our servers will fetch and load the latest SAR image for that exact spot.", img: J, label: "Click me", top: "50%", left: "20%" },
+    { text: "Along with the SAR image, you will get its metadata, explained by AI.", img: N, label: "Click me", top: "70%", left: "75%" },
+    { text: "Read, understand, and enjoy the insights. When you're done, select another location!", img: S, label: "Click me", top: "85%", left: "40%" },
   ];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -143,6 +148,10 @@ const LandingPage = ({ navigate }) => {
         <h1>SAR-A</h1>
       </section>
 
+      {/* */}
+
+      {/* */}
+
       <section id="section-2" className="section section2">
         <div className="holo-box">
           <p>
@@ -155,11 +164,48 @@ const LandingPage = ({ navigate }) => {
         </div>
       </section>
       <AsteroidBelt/>
+            <section id="sar-examples" className="section sar-examples-section">
+        <div className="sar-example">
+            <img src={SarImage1} alt="SAR Example 1" className="sar-image"/>
+            <div className="sar-description">
+                <h3>Urban & Coastal Areas</h3>
+                <p><strong>Majority Colors:</strong> Orange, Blue, and Green.</p>
+                <ul>
+                    <li><strong>Orange/Red:</strong> Indicates urban environments and built-up structures. The bright signals are caused by "double-bounce" scattering off buildings.</li>
+                    <li><strong>Blue/Black:</strong> Represents smooth surfaces like water bodies (sea, rivers).</li>
+                    <li><strong>Green:</strong> Typically shows vegetated areas such as fields or parks.</li>
+                </ul>
+            </div>
+        </div>
+        <div className="sar-example">
+            <img src={SarImage2} alt="SAR Example 2" className="sar-image"/>
+            <div className="sar-description">
+                <h3>Agricultural Landscapes</h3>
+                <p><strong>Majority Colors:</strong> Yellow-Green, Purple, and Cyan.</p>
+                <ul>
+                    <li><strong>Yellow-Green:</strong> Represents agricultural fields. The grid-like patterns are characteristic of farmland.</li>
+                    <li><strong>Purple/Pink:</strong> Can indicate areas with different soil moisture, fallow fields, or rougher surfaces.</li>
+                    <li><strong>Cyan/Light Blue:</strong> Pinpoints water bodies like lakes or flooded areas.</li>
+                </ul>
+            </div>
+        </div>
+        <div className="sar-example">
+            <img src={SarImage3} alt="SAR Example 3" className="sar-image"/>
+            <div className="sar-description">
+                <h3>River Systems (Fluvial)</h3>
+                <p><strong>Majority Colors:</strong> Dark Blue and Yellow-Green.</p>
+                <ul>
+                    <li><strong>Dark Blue/Black:</strong> Clearly outlines the river channels. Water absorbs the radar signal, making it appear dark.</li>
+                    <li><strong>Yellow-Green:</strong> Shows the surrounding land, which is likely covered in vegetation like forests or grasslands.</li>
+                </ul>
+            </div>
+        </div>
+      </section>
       <section id="section-3" className="section section3">
-        <FlipCard display={Arushi} front="Arushi Ojha" back="Arushi, a CS undergrad , always enthusiastic to learn something new" />
-        <FlipCard display={Asf} front="ASF Earth Data API" back="Providing the SAR meta Data necessary to showcase us" />
-        <FlipCard display={Open} front="OpenRouter API" back="Analysing the SAR meta data so it is easier to read and understand by everyone" />
-        <FlipCard display={Git} front="Github" back="Hosting everything online for devOps all around the world to enjoy this application" />
+        <FlipCard display={Arushi} front="Arushi Ojha (Click me)" back="Arushi, a CS undergrad , always enthusiastic to learn something new" />
+        <FlipCard display={Asf} front="ASF Earth Data API (Click me)" back="Providing the SAR meta Data necessary to showcase us" />
+        <FlipCard display={Open} front="OpenRouter API (Click me)" back="Analysing the SAR meta data so it is easier to read and understand by everyone" />
+        <FlipCard display={Git} front="Github (Click me)" back="Hosting everything online for devOps all around the world to enjoy this application" />
       </section>
       <AsteroidBelt/>
       <section id="section-4" className="section section4">

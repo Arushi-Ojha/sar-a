@@ -157,9 +157,9 @@ font-family: 'Honk', 'Quintessential', sans-serif;
 }
 .section2 {
   position: relative;
-  width: 60%;
-  min-height: 100vh;
-  left: 40%;
+  width: 100%;
+  min-height: max-content;
+  padding-left: 40%;
   display: flex;
   justify-content: flex-end; 
   align-items: center;
@@ -259,7 +259,7 @@ font-family: 'Honk', 'Quintessential', sans-serif;
   border: 2px solid #456882;
   border-radius: 8px;
   background: transparent;
-  color: #FFACAC;
+  color: #472929;
   cursor: pointer;
   font-family: "Silkscreen", sans-serif;
   transition: 0.3s;
@@ -323,7 +323,7 @@ font-family: 'Honk', 'Quintessential', sans-serif;
   padding: 1rem 2.2rem;
   border-radius: 10px;
   border: 2px solid #456882;
-  background: transparent;
+  background:rgba(0, 0, 0, 0.518);
   color: #FFACAC;
   cursor: pointer;
   transition: 0.3s;
@@ -339,37 +339,81 @@ font-family: 'Honk', 'Quintessential', sans-serif;
 }
 
 /* Section 6 */
+/* Styling for the heading above the calculator */
 .section6 h3 {
-  font-family: "Keania One", cursive;
-  color: #E45A92;
+  font-family: "Keania One", cursive; /* Keep your existing font */
+  color: #E45A92; /* The pink color from the calculator body */
   margin-bottom: 1rem;
+  text-align: center; /* Center the text */
 }
+
+/* Overall container for the calculator buttons */
 .calculator {
   display: grid;
-  grid-template-columns: repeat(3, 80px);
-  gap: 1rem;
-  margin: 1rem 0;
+  /* Adjust columns for the calculator layout, often 4 for real calculators,
+     but the image has 3 for numbers, then operators */
+  grid-template-columns: repeat(3, 80px); /* 3 columns for numbers 1-9 */
+  gap: 0.5rem; /* Reduced gap to be closer to the image */
+  margin: 1rem auto; /* Center the calculator horizontally */
+  padding: 1rem;
+  background-color: #F7D7E9; /* Light pink background from the calculator body */
+  border-radius: 15px; /* More rounded corners for the calculator body */
+  border: 4px solid #BB8FA5; /* Darker pink border for the calculator body */
+  width: fit-content; /* Make the calculator container fit its content */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
 }
+
+/* Styling for individual calculator buttons */
 .calculator button {
   padding: 1rem;
-  font-size: 1.3rem;
-  border-radius: 12px;
-  border: 2px solid #456882;
-  background: transparent;
-  color: #456882;
+  font-size: 1.5rem; /* Slightly larger font for readability */
+  border-radius: 8px; /* Slightly less rounded corners for buttons */
+  border: 2px solid #BB8FA5; /* Darker pink border for buttons */
+  background: #C7E6F3; /* Light blue button background from the image */
+  color: #3B5B71; /* Darker blue text color for buttons */
   cursor: pointer;
-  font-family: "Silkscreen", sans-serif;
-  transition: 0.3s;
+  font-family: "Silkscreen", sans-serif; /* Keep your existing font */
+  transition: 0.3s ease-in-out; /* Smooth transition */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Button shadow for depth */
 }
+
+/* Styling for the '0' button to span two columns, like in the image */
+.calculator button:nth-child(10) { /* This targets the '0' button (it's the 10th button in your JSX) */
+  grid-column: span 2; /* Make '0' span two columns */
+}
+
+
 .calculator button:hover {
-  background: #FFACAC;
+  background: #A9D9EF; /* Slightly darker blue on hover */
   color: #1B3C53;
+  transform: translateY(-2px); /* Slight lift effect on hover */
 }
+
+/* Styling for the input/display area */
 .calc-input {
-  font-size: 1.8rem;
-  margin-top: 1rem;
-  font-family: "Nabla", cursive;
-  color: #FFACAC;
+  font-size: 2.5rem; /* Larger font size for the display */
+  margin: 1rem auto; /* Center the input horizontally */
+  padding: 0.8rem 1rem; /* Padding for the display area */
+  background-color: #D3D3D3; /* Gray background for the display from the image */
+  border: 2px solid #A0A0A0; /* Darker gray border */
+  border-radius: 8px; /* Slightly rounded corners */
+  width: 260px; /* Adjust width to fit the calculator body */
+  height: 60px; /* Fixed height for the display */
+  display: flex; /* Use flex to center text vertically */
+  align-items: center; /* Center text vertically */
+  justify-content: flex-end; /* Align text to the right, like a calculator */
+  font-family: "Nabla", cursive; /* Keep your existing font */
+  color: #333; /* Darker text for better contrast on gray */
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* Inset shadow for display depth */
+}
+
+
+.calculator-top-bar {
+  background-color: #666;
+  height: 10px;
+  width: 90%;
+  margin: 0 auto 0.5rem;
+  border-radius: 3px;
 }
 
 
@@ -508,5 +552,96 @@ font-family: 'Honk', 'Quintessential', sans-serif;
   font-size: 1.1rem;
   line-height: 1.6; /* Improves readability for multiple lines */
   margin: 0;
-  white-space: pre-wrap; /* This makes sure line breaks (\n) from the AI are displayed correctly */
+  white-space: pre-wrap;
 }
+/* Add this to your main CSS file (e.g., App.css or LandingPage.css) */
+
+.sar-examples-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem; /* Adds space between each image-description block */
+  padding: 5rem 2rem; /* Adds some padding to the section */
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.sar-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem; /* Space between image and text */
+  width: 80%; /* Control the width of the container */
+  max-width: 1200px; /* Maximum width */
+  background: rgba(0, 255, 255, 0.05); /* Optional futuristic background */
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+/* Alternate layout direction for every other element */
+.sar-example:nth-child(even) {
+  flex-direction: row-reverse; /* Flips the order for the second item */
+}
+
+
+.sar-image {
+  width: 400px; /* Set a fixed width */
+  height: 300px; /* Set a fixed height */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 10px;
+  border: 2px solid cyan;
+}
+
+.sar-description {
+  flex: 1; /* Allows the description to take up remaining space */
+  color: #fff;
+}
+
+.sar-description h3 {
+  color: cyan;
+  margin-bottom: 1rem;
+}
+
+.sar-description ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sar-description li {
+  margin-bottom: 0.5rem;
+}
+
+.sar-description strong {
+  color: #f0f0f0;
+}
+/* Section 2 (Space BG — already has, you can replace if needed) */
+.section2 {
+  background-image: url('./assets/stars.jpg'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Section 4 (Example: Galaxy background) */
+.section3 {
+  background-image: url('./assets/forest.jpg'); /* Replace with your own image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* optional: parallax effect */
+}
+
+/* Section 6 (Example: Earth-from-space background) */
+.section5 {
+  background-image: url('./assets/desert.jpg'); /* Replace with your own image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Section 7 (Example: Stars or Aurora background) */
+

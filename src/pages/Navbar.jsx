@@ -4,26 +4,30 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // The block: 'center' option often provides a better viewing experience
+      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
+  // Updated the links array to include the new section and use a targetId property
   const navLinks = [
-    { id: 1, label: 'SAR-A' },
-    { id: 2, label: 'Description' },
-    { id: 3, label: 'Team Members' },
-    { id: 4, label: 'How to Operate?' },
-    { id: 5, label: 'Warm Up Game' },
-    { id: 6, label: 'Secret Door' },
+    { label: 'SAR-A', targetId: 'section-1' }, // <-- Your new section link
+    { label: 'Description', targetId: 'section-2' },
+    { label: 'SAR Examples', targetId: 'sar-examples' },
+    { label: 'Team Members', targetId: 'section-3' },
+    { label: 'How to Operate?', targetId: 'section-4' },
+    { label: 'Warm Up Game', targetId: 'section-5' },
+    { label: 'Secret Door', targetId: 'section-6' },
   ];
 
   return (
     <nav className="navbar-container">
       {navLinks.map((link) => (
         <button 
-          key={link.id} 
+          key={link.label} // Use a unique value like the label for the key
           className="nav-button" 
-          onClick={() => scrollToSection(`section-${link.id}`)}
+          // onClick now directly uses the targetId from the array
+          onClick={() => scrollToSection(link.targetId)}
         >
           {link.label}
         </button>
