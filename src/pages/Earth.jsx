@@ -6,15 +6,15 @@ function EarthSphere() {
   const ref = useRef();
   const baseColorTexture = useLoader(
     THREE.TextureLoader,
-    "/earth/textures/Clouds_baseColor.png"
+    "./earth/textures/Clouds_baseColor.png"
   );
   const emissiveTexture = useLoader(
     THREE.TextureLoader,
-    "/earth/textures/Earth_emissive.jpeg"
+    "./earth/textures/Earth_emissive.jpeg"
   );
   const cloudTexture = useLoader(
     THREE.TextureLoader,
-    "/earth/textures/Earth_baseColor.jpeg"
+    "./earth/textures/Earth_baseColor.jpeg"
   );
 
   useFrame(() => {
