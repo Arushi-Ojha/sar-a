@@ -12,12 +12,17 @@ import E from "../assets/earth.png";
 import J from "../assets/jupiter.png";
 import N from "../assets/neptune.png";
 import S from "../assets/saturn.png";
-
+// Importing your local videos
+import v1 from '../assets/Change.mp4';
+import v2 from '../assets/Map.mp4';
+import v3 from '../assets/Planet.mp4';
+import v4 from '../assets/Satellite.mp4';
+import v5 from '../assets/Space.mp4';
+import v6 from '../assets/SS.mp4';
 // Importing the SAR images you provided
-import SarImage1 from "../assets/Sar1.jpg"; // Make sure to place Sar1.jpg in your assets folder
-import SarImage2 from "../assets/Sar2.avif"; // Make sure to place Sar2.avif in your assets folder
-import SarImage3 from "../assets/Sar3.jpeg"; // Make sure to place Sar3.jpeg in your assets folder
-
+import SarImage1 from "../assets/Sar1.jpg";
+import SarImage2 from "../assets/Sar2.avif";
+import SarImage3 from "../assets/Sar3.jpeg";
 
 import Earth from "./Earth";
 
@@ -107,15 +112,15 @@ const LandingPage = ({ navigate }) => {
       let x, y, scale;
       if (scrollY < vh) {
         const progress = scrollY / vh;
-        x = 50 - progress * 45; 
+        x = 50 - progress * 45;
         y = 100 - progress * 50;
         scale = 0.8 + progress * 0.2;
       }
       else if (scrollY < vh * 2) {
         const progress = (scrollY - vh) / vh;
-        x = 5 + progress * 90; 
+        x = 5 + progress * 90;
         y = 50;
-        scale = 1.0 + progress * 0.2; 
+        scale = 1.0 + progress * 0.2;
       }
       else {
         x = 95;
@@ -133,6 +138,45 @@ const LandingPage = ({ navigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // ### MODIFICATION 1: Updated data array to use video imports ###
+  const descriptionData = [
+    {
+      title: "👁️ Seeing in a New Light: What is SAR?",
+      videoSrc: v5,
+      flexDirection: 'row',
+      content: "Synthetic Aperture Radar (SAR) isn't a normal camera. It's a powerful remote sensing technology that can see through clouds, smoke, and even darkness. SAR-A is built to harness this power, revealing details on the Earth's surface that are invisible to traditional satellites."
+    },
+    {
+      title: "🛰️ Our Source: The ASF Earth Data API",
+      videoSrc: v4,
+      flexDirection: 'row-reverse',
+      content: "Our platform connects directly to the Alaska Satellite Facility (ASF) Distributed Active Archive Center, a premier source for SAR data provided by NASA. This gives us access to a vast, constantly updated library of high-resolution imagery from across the globe."
+    },
+    {
+      title: "🧩 The Challenge: Decoding Complex Data",
+      videoSrc: v1,
+      flexDirection: 'row',
+      content: "Raw SAR images are not photographs. They are complex visualizations of radar backscatter. Different colors and textures represent surface roughness, moisture, and structure. Interpreting this data correctly requires specialized knowledge, creating a barrier for most people."
+    },
+    {
+      title: "🌍 The Interface: An Interactive 3D Globe",
+      videoSrc: v2,
+      flexDirection: 'row-reverse',
+      content: "The journey begins with a simple, intuitive action. Users explore a detailed 3D model of our planet and select any point of interest with a single click. This is the starting point for our entire data retrieval and analysis pipeline, making global-scale investigation effortless."
+    },
+    {
+      title: "🧠 The Solution: AI-Powered Interpretation",
+      videoSrc: v6,
+      flexDirection: 'row',
+      content: "This is where SAR-A's intelligence shines. The fetched SAR image is fed to a suite of AI models. Using advanced computer vision (via OpenRouter and Imagga APIs), the AI identifies features, analyzes color compositions, and translates the complex scientific data into a clear, human-readable narrative."
+    },
+    {
+      title: "📊 The Result: Democratized Geospatial Insights",
+      videoSrc: v3,
+      flexDirection: 'row-reverse',
+      content: "The final output is a comprehensive, easy-to-understand report. You get the annotated image, key metadata, and a detailed summary of what the landscape consists of. SAR-A's mission is to break down barriers, making critical Earth observation data accessible to researchers, students, and the curious public alike."
+    }
+  ];
 
  return (
     <div className="landing-page">
@@ -148,23 +192,33 @@ const LandingPage = ({ navigate }) => {
         <h1>SAR-A</h1>
       </section>
 
-      {/* */}
-
-      {/* */}
-
-      <section id="section-2" className="section section2">
-        <div className="holo-box">
-          <p>
-            This project is a next-generation Synthetic Aperture Radar (SAR) geospatial intelligence platform that transforms complex satellite data into clear, actionable insights.
-            Through an interactive 3D globe interface, users can explore high-resolution SAR imagery capable of revealing details invisible to traditional optical satellites—penetrating clouds, operating day and night, and detecting subtle ground changes.
-            Its uniqueness lies in democratizing access: SAR data, often locked behind technical barriers, is processed and visualized in real time using AI and cloud pipelines, making it intuitive for scientists, policymakers, NGOs, and the public alike.
-            From disaster response to climate monitoring and urban planning, the platform enables faster, smarter, and more informed decisions.
-            By blending cutting-edge radar sensing with an accessible, visually stunning interface, this project becomes more than a tool—it is a planetary awareness engine, helping humanity see the unseen and act responsibly on a global scale.
-          </p>
+      <div className="section2">
+        <div className="description-grid">
+          {descriptionData.map((item, index) => (
+            <div key={index} className="description-row" style={{ flexDirection: item.flexDirection }}>
+              <div className="video-container">
+                {/* ### MODIFICATION 2: Replaced iframe with the video tag ### */}
+                <video
+                  key={item.videoSrc}
+                  src={item.videoSrc}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="background-video"
+                />
+              </div>
+              <div className="holo-box">
+                <h3>{item.title}</h3>
+                <p>{item.content}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
+
       <AsteroidBelt/>
-            <section id="sar-examples" className="section sar-examples-section">
+      <section id="sar-examples" className="section sar-examples-section">
         <div className="sar-example">
             <img src={SarImage1} alt="SAR Example 1" className="sar-image"/>
             <div className="sar-description">

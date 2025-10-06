@@ -141,39 +141,88 @@ font-family: 'Honk', 'Quintessential', sans-serif;
   background-repeat: no-repeat;  /* Prevents the image from repeating */
 }
 /* Section 2  */
+/* This is the main container for all the description rows */
+/* This is the main container for all the description rows */
+.description-grid {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Space between each row */
+}
+
+/* Styles for each row (video + text box) */
+.description-row {
+  display: flex;
+  align-items: center; /* Vertically align items in the center */
+  gap: 2.5rem; /* Increased gap slightly for better spacing */
+}
+
+/* Alternating layout for visual interest */
+.description-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* --- CSS FIXES START HERE --- */
+
+/* 1. Define a fixed size for the video container */
+.video-container {
+  width: 480px;         /* Set a fixed width for the "small box" */
+  flex-shrink: 0;       /* Prevent this container from shrinking */
+  aspect-ratio: 16 / 9; /* Maintain a widescreen video ratio */
+  border-radius: 15px;
+  overflow: hidden;     /* Crucial for keeping the video within the rounded corners */
+  border: 2px solid #456882;
+  box-shadow: 0 0 20px rgba(69, 104, 130, 0.7);
+  background: #000; /* Add a black background for videos that load slowly */
+}
+
+/* 2. Ensure the video fills its new, smaller container perfectly */
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This makes the video fill the box without distortion */
+}
+
+/* 3. Ensure the text box takes up the remaining space */
 .section2 .holo-box {
+  flex: 1; /* This makes the text box grow to fill the rest of the available space */
   font-family: "Keania One", cursive;
   background: rgba(69, 104, 130, 0.15);
   border: 2px solid #456882;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 20px;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  max-width: 900px;
-  text-align: center;
+  text-align: left;
   font-size: 1.4rem;
   color: #FFACAC;
   box-shadow: 0 0 15px #456882;
-}
-.section2 {
-  position: relative;
-  width: 100%;
-  min-height: max-content;
-  padding-left: 40%;
-  display: flex;
-  justify-content: flex-end; 
-  align-items: center;
-  background-image: url('./assets/spacebg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
-  text-align: center;
-  /* Added padding so the box doesn't touch the screen edge */
-  padding-right: 10vw;
-  box-sizing: border-box; /* Ensures padding is included in the element's total width */
+  /* height: 100% is no longer needed as align-items on the parent handles it */
 }
 
+/* --- RESPONSIVE FIXES --- */
+
+@media (max-width: 900px) {
+  .description-row,
+  .description-row:nth-child(even) {
+    flex-direction: column; /* Stack video on top of text */
+  }
+
+  .video-container {
+    width: 100%; /* Make video full-width on mobile */
+    max-width: 480px; /* But don't let it get bigger than its desktop size */
+    margin: 0 auto;   /* Center the video box */
+  }
+
+  .section2 .holo-box {
+    text-align: center; /* Center text on mobile */
+  }
+}
+video {
+  filter: invert(1);
+}
 /* Section 3 */
 .section3 {
   display: flex;
