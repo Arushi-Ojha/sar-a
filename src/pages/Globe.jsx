@@ -32,7 +32,7 @@ function Globe() {
       setMetadata(null);
 
       try {
-        const response = await fetch("https://localhost:5000/api/get-sar-image", {
+        const response = await fetch("https://svgoyjpop34f24pugm5sw666qe0iwsba.lambda-url.ap-southeast-2.on.aws/api/get-sar-image", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(pinLocation),
