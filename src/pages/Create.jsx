@@ -126,69 +126,63 @@ export default function App() {
 
   // --- UI ---
   return (
-    <div className="w-screen h-screen bg-gray-200 antialiased relative overflow-hidden">
-      {/* --- On-Screen Feedback Message --- */}
-      <div className={`absolute top-5 left-1/2 -translate-x-1/2 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300 ${selectionFeedback ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}`}>
-        {selectionFeedback}
-      </div>
-      
-      <canvas
-          ref={canvasRef}
-          className="cursor-crosshair w-full h-full shadow-inner"
-          onMouseDown={startDrawing}
-          onMouseUp={stopDrawing}
-          onMouseOut={stopDrawing}
-          onMouseMove={draw}
-          onTouchStart={startDrawing}
-          onTouchEnd={stopDrawing}
-          onTouchMove={draw}
-      />
-      
-      {/* --- Floating Controls Panel --- */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-gray-800/80 backdrop-blur-sm p-4 rounded-xl shadow-2xl flex items-center gap-6 border border-gray-600">
+    <div className="creator-container">
+        <div className={`feedback-message ${selectionFeedback ? 'feedback-visible' : 'feedback-hidden'}`}>
+          {selectionFeedback}
+        </div>
         
-        {/* Color Palette */}
-        <div className="flex items-end gap-3" title="Select Landscape Type">
-          {SAR_COLORS.map(({ name, fullName, color }) => (
-            <div key={name} className="flex flex-col items-center gap-1.5">
-                <button
-                    title={fullName}
-                    onClick={() => handleColorSelect(color, name.toLowerCase())}
-                    className={`w-7 h-7 rounded-full transition-transform duration-200 transform hover:scale-110 border-2 ${brushColor === color ? 'border-cyan-400 scale-110' : 'border-white/20'}`}
-                    style={{ backgroundColor: color }}
-                />
-                <span className={`text-xs font-medium ${brushColor === color ? 'text-cyan-400' : 'text-gray-300'}`}>{name}</span>
+        <canvas
+            ref={canvasRef}
+            className="creator-canvas"
+            onMouseDown={startDrawing}
+            onMouseUp={stopDrawing}
+            onMouseOut={stopDrawing}
+            onMouseMove={draw}
+            onTouchStart={startDrawing}
+            onTouchEnd={stopDrawing}
+            onTouchMove={draw}
+        />
+        
+        <div className="controls-panel">
+          <div className="color-palette" title="Select Landscape Type">
+            {SAR_COLORS.map(({ name, fullName, color }) => (
+              <div key={name} className="color-item">
+                  <button
+                      title={fullName}
+                      onClick={() => handleColorSelect(color, name.toLowerCase())}
+                      className={`color-swatch ${brushColor === color ? 'active' : ''}`}
+                      style={{ backgroundColor: color }}
+                  />
+                  <span className={`color-label ${brushColor === color ? 'active-label' : ''}`}>{name}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="divider" />
+
+          <div className="sliders">
+            <div className="slider-control">
+              <label htmlFor="brushSize">Size</label>
+              <input id="brushSize" type="range" min="5" max="100" value={brushSize} onChange={(e) => setBrushSize(e.target.value)} />
             </div>
-          ))}
-        </div>
-
-        <div className="w-px h-16 bg-gray-600" />
-
-        {/* Brush Sliders */}
-        <div className="flex flex-col gap-2 text-white w-40">
-          <div className="flex items-center gap-2">
-            <label htmlFor="brushSize" className="text-xs font-medium text-gray-300 w-12">Size</label>
-            <input id="brushSize" type="range" min="5" max="100" value={brushSize} onChange={(e) => setBrushSize(e.target.value)} className="w-full h-1.5 bg-gray-600 rounded-lg appearance-none cursor-pointer"/>
+            <div className="slider-control">
+              <label htmlFor="brushIntensity">Intensity</label>
+              <input id="brushIntensity" type="range" min="10" max="1000" value={brushIntensity} onChange={(e) => setBrushIntensity(e.target.value)}/>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <label htmlFor="brushIntensity" className="text-xs font-medium text-gray-300 w-12">Intensity</label>
-            <input id="brushIntensity" type="range" min="10" max="1000" value={brushIntensity} onChange={(e) => setBrushIntensity(e.target.value)} className="w-full h-1.5 bg-gray-600 rounded-lg appearance-none cursor-pointer"/>
+
+          <div className="divider" />
+
+          <div className="action-buttons">
+              <button onClick={downloadImage} title="Download Image" className="action-btn">
+                  <DownloadIcon />
+              </button>
+              <button onClick={clearCanvas} title="Clear Canvas" className="action-btn">
+                  <TrashIcon />
+              </button>
           </div>
-        </div>
-
-        <div className="w-px h-16 bg-gray-600" />
-
-        {/* Action Buttons */}
-        <div className="flex items-center gap-3">
-            <button onClick={downloadImage} title="Download Image" className="p-3 text-gray-300 hover:text-white bg-blue-600/50 hover:bg-blue-600/80 rounded-full transition-all duration-200">
-                <DownloadIcon />
-            </button>
-            <button onClick={clearCanvas} title="Clear Canvas" className="p-3 text-gray-300 hover:text-white bg-red-600/50 hover:bg-red-600/80 rounded-full transition-all duration-200">
-                <TrashIcon />
-            </button>
         </div>
       </div>
-    </div>
   );
 }
 
