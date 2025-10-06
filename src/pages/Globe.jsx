@@ -32,7 +32,7 @@ function Globe() {
       setMetadata(null);
 
       try {
-        const response = await fetch("https://sara-ajf4f3e2cqdnfmf5.centralindia-01.azurewebsites.net/api/get-sar-image", {
+        const response = await fetch("https://localhost:5000/api/get-sar-image", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(pinLocation),

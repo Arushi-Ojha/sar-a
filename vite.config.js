@@ -1,7 +1,12 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import cesium from 'vite-plugin-cesium'; // Import the plugin
 
 export default defineConfig({
-  plugins: [react()],
-  base: "/",  // ensures /earth/textures/... works correctly
+  plugins: [
+    react(),
+    cesium(), // Add the plugin here
+  ],
+  base: '/',
 });
