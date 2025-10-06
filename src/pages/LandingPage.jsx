@@ -101,6 +101,17 @@ const LandingPage = ({ navigate }) => {
       setInput("");
     }
   };
+  const [createInput, setCreateInput] = useState("");
+  const createCorrectCode = "2468";
+  const handleCreateCalcClick = (num) => {
+    const newCreateInput = createInput + num;
+    setCreateInput(newCreateInput);
+    if (newCreateInput === createCorrectCode) {
+      navigate("/create");
+    } else if (newCreateInput.length >= createCorrectCode.length && newCreateInput !== createCorrectCode) {
+      setTimeout(() => setCreateInput(""), 500);
+    }
+  };
 
   const [earthTransform, setEarthTransform] = useState('');
   const [earthZIndex, setEarthZIndex] = useState(10);
@@ -314,16 +325,24 @@ const LandingPage = ({ navigate }) => {
       </section>
       <AsteroidBelt/>
       <section id="section-6" className="section section6">
-        <h3>Type 5678...</h3>
-        <div className="calculator">
-          {Array.from({ length: 9 }, (_, i) => (
-            <button key={i} onClick={() => handleCalcClick((i + 1).toString())}>
-              {i + 1}
-            </button>
-          ))}
-          <button onClick={() => handleCalcClick("0")}>0</button>
+        <div className="calculators-container">
+          <div className="calculator-wrapper">
+            <h3>Type 5678 for Globe</h3>
+            <div className="calculator">
+              {Array.from({ length: 9 }, (_, i) => (<button key={i} onClick={() => handleCalcClick((i + 1).toString())}>{i + 1}</button>))}
+              <button onClick={() => handleCalcClick("0")}>0</button>
+            </div>
+            <p className="calc-input">{input}</p>
+          </div>
+          <div className="calculator-wrapper">
+            <h3>Type 2468 for Create</h3>
+            <div className="calculator">
+              {Array.from({ length: 9 }, (_, i) => (<button key={i} onClick={() => handleCreateCalcClick((i + 1).toString())}>{i + 1}</button>))}
+              <button onClick={() => handleCreateCalcClick("0")}>0</button>
+            </div>
+            <p className="calc-input">{createInput}</p>
+          </div>
         </div>
-        <p className="calc-input">{input}</p>
       </section>
     </div>
   );
